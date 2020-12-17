@@ -1,29 +1,5 @@
-<p id="notice"><%= notice %></p>
-
-<p>
-  <strong>Title:</strong>
-  <%= @course.title %>
-</p>
-
-<p>
-  <strong>Instrument:</strong>
-  <%= @course.instrument %>
-</p>
-
-<p>
-  <strong>Genre:</strong>
-  <%= @course.genre %>
-</p>
-
-<p>
-  <strong>Description:</strong>
-  <%= @course.description %>
-</p>
-
-<p>
-  <strong>Price:</strong>
-  <%= @course.price %>
-</p>
-
-<%= link_to 'Edit', edit_course_path(@course) %> |
-<%= link_to 'Back', courses_path %>
+<%= link_to 'Courses', courses_path %>
+|
+<%= link_to @course.title, course_path(@course) %>
+<p></p>
+<%= render 'courses/course', course: @course %>

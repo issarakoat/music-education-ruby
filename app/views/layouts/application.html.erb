@@ -1,5 +1,7 @@
 <!DOCTYPE html>
 <html>
+  <meta content="text/html; charset=UTF-8" http-equiv="Content-Type"/>
+  <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
   <head>
     <title>MusicEducation</title>
     <%= csrf_meta_tags %>
@@ -12,6 +14,11 @@
   </head>
 
   <body>
-    <%= yield %>
+    <%= render 'layouts/header' %>
+    <%= render 'layouts/messages' %>
+   
+    <div class='container'>
+      <%= yield %>
+    </div>
   </body>
 </html>
