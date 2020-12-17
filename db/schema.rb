@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_12_17_215407) do
+ActiveRecord::Schema.define(version: 2020_12_17_222456) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -48,7 +48,7 @@ ActiveRecord::Schema.define(version: 2020_12_17_215407) do
 
   create_table "courses", force: :cascade do |t|
     t.string "title"
-    t.text "instrument"
+    t.string "instrument"
     t.string "genre"
     t.text "description"
     t.integer "price"
@@ -56,6 +56,8 @@ ActiveRecord::Schema.define(version: 2020_12_17_215407) do
     t.datetime "updated_at", precision: 6, null: false
     t.bigint "user_id", null: false
     t.string "slug"
+    t.string "language", default: "English", null: false
+    t.string "level", default: "Beginner", null: false
     t.index ["slug"], name: "index_courses_on_slug", unique: true
     t.index ["user_id"], name: "index_courses_on_user_id"
   end
