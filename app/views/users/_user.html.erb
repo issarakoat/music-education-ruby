@@ -1,8 +1,13 @@
 <div class="card">
   <div class="card-header">
+    <% if user.online? %>
+      <div class="text-success far fa-circle"></div>
+    <% else %>
+      <div class="text-danger far fa-circle"></div>
+    <% end %>
     <div class="fa fa-user"></div>
-    <%= link_to user.email, user_path(user) %>
-  </div>
+      <%= link_to user.email, user_path(user) %>
+    </div>
   <div class="card-footer">
     Signed up
     <%= time_ago_in_words(user.created_at) %>
