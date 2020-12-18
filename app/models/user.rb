@@ -4,6 +4,8 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable, :trackable
          
+  include PublicActivity::Model
+  tracked
   def to_s
     email
   end
