@@ -12,6 +12,6 @@
     <% end %>
   </div>
   <div class="col-lg-6">
-    <%= link_to 'Add lesson', new_lesson_path(course_id: @course.id) %>
+    <%= link_to 'Add lesson', new_course_lesson_path(@course, @lesson) %>
   </div>
 </div>
