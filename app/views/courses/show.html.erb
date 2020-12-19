@@ -11,7 +11,8 @@
       <%= render 'lessons/lesson', lesson: lesson %>
     <% end %>
   </div>
-  <div class="col-lg-6">
-    <%= link_to 'Add lesson', new_course_lesson_path(@course, @lesson) %>
-  </div>
+  <% if policy(@course).edit? %>
+    <%= link_to 'Add lesson', new_course_lesson_path(@course, @lesson), class: 'btn btn-primary btn-sm btn-block' %>
+  <% end %>
+
 </div>
