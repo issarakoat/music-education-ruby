@@ -1,44 +1,31 @@
 class EnrollmentsController < ApplicationController
   before_action :set_enrollment, only: [:show, :edit, :update, :destroy]
+  before_action :set_coruse, only: [:new, :create]
 
-  # GET /enrollments
-  # GET /enrollments.json
   def index
     @enrollments = Enrollment.all
   end
 
-  # GET /enrollments/1
-  # GET /enrollments/1.json
   def show
   end
 
-  # GET /enrollments/new
   def new
     @enrollment = Enrollment.new
   end
 
-  # GET /enrollments/1/edit
   def edit
   end
 
-  # POST /enrollments
-  # POST /enrollments.json
   def create
-    @enrollment = Enrollment.new(enrollment_params)
-
-    respond_to do |format|
-      if @enrollment.save
-        format.html { redirect_to @enrollment, notice: 'Enrollment was successfully created.' }
-        format.json { render :show, status: :created, location: @enrollment }
-      else
-        format.html { render :new }
-        format.json { render json: @enrollment.errors, status: :unprocessable_entity }
-      end
+    if @course.price > 0
+      flash[:alert] = "You can not access paid courses yet."
+      redirect_to new_course_enrollment_path(@course)
+    else
+      @enrollment = current_user.buy_course(@course)
+      redirect_to course_path(@course), notice: "You are enrolled!"
     end
   end
 
-  # PATCH/PUT /enrollments/1
-  # PATCH/PUT /enrollments/1.json
   def update
     respond_to do |format|
       if @enrollment.update(enrollment_params)
@@ -51,8 +38,6 @@ class EnrollmentsController < ApplicationController
     end
   end
 
-  # DELETE /enrollments/1
-  # DELETE /enrollments/1.json
   def destroy
     @enrollment.destroy
     respond_to do |format|
@@ -62,13 +47,15 @@ class EnrollmentsController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
+    def set_coruse
+      @course = Course.friendly.find(params[:course_id])
+    end
+
     def set_enrollment
       @enrollment = Enrollment.find(params[:id])
     end
 
-    # Only allow a list of trusted parameters through.
     def enrollment_params
-      params.require(:enrollment).permit(:course_id, :user_id, :rating, :review)
+      params.require(:enrollment).permit(:rating, :review)
     end
 end
