@@ -3,7 +3,9 @@ class EnrollmentsController < ApplicationController
   before_action :set_coruse, only: [:new, :create]
 
   def index
-    @pagy, @enrollments = pagy(Enrollment.all)
+    # @pagy, @enrollments = pagy(Enrollment.all)
+    @q = Enrollment.ransack(params[:q])
+    @pagy, @enrollments = pagy(@q.result.includes(:user))
     authorize @enrollments
   end
 
