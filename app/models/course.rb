@@ -7,7 +7,8 @@ class Course < ApplicationRecord
     end
     has_rich_text :description
     
-    belongs_to :user
+    belongs_to :user, counter_cache: true
+    #User.find_each { |user| User.reset_counters(user.id, :courses) }  
     
     has_many :lessons, dependent: :destroy
     has_many :enrollments

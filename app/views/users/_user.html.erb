@@ -39,7 +39,13 @@
     </b>
     <%= user.last_sign_in_ip %>
   </div>
-  
+  <div class="card-footer">
+    Courses created:
+    <%= user.courses_count %>
+    <div class="row"></div>
+    Enrollments:
+    <%= user.enrollments_count %>
+  </div>
   <div class="card-footer">
     <% user.roles.each do |role| %>
       <div class="badge badge-info">
