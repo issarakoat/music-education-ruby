@@ -13,6 +13,8 @@ class Course < ApplicationRecord
     has_many :lessons, dependent: :destroy
     has_many :enrollments
     
+    validates :title, uniqueness: true
+    
     extend FriendlyId
     friendly_id :title, use: :slugged
     

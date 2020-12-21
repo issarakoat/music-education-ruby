@@ -3,7 +3,7 @@
     <!--= image_tag 'logo.png', size: '20x20', alt: "logo", class: 'rounded'
     -->
     <div class="fa fa-graduation-cap"></div>
-    Corsego
+    Music Education
   </a>
   <button aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation" class="navbar-toggler" data-target="#navbarSupportedContent" data-toggle="collapse" type="button">
     <span class="navbar-toggler-icon"></span>
@@ -41,30 +41,7 @@
         </div>
       </ul>
       <ul class="navbar-nav mr-auto">
-        <!--%li.nav-item{class: "#{'active font-weight-bold' if current_page?(new_course_path)}"}
-        -->
-        <!--  = link_to new_course_path, class: 'nav-link' do
-        -->
-        <!--    .fa.fa-plus
-        -->
-        <!--    New Course
-        -->
-        <!--%li.nav-item{class: "#{'active font-weight-bold' if current_page?(users_path)}"}
-        -->
-        <!--  = link_to users_path, class: 'nav-link' do
-        -->
-        <!--    .fa.fa-users
-        -->
-        <!--    Users
-        -->
-        <!--%li.nav-item{class: "#{'active font-weight-bold' if current_page?(enrollments_path)}"}
-        -->
-        <!--  = link_to enrollments_path, class: 'nav-link' do
-        -->
-        <!--    .fa.fa-lock-open
-        -->
-        <!--    Enrollments
-        -->
+
         <% if current_user.has_role?(:student) %>
           <li class="nav-item dropdown">
             <a aria-expanded="false" aria-haspopup="true" class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" id="studentDropdown" role="button">
@@ -103,7 +80,7 @@
               <% end %>
               <%= link_to created_courses_path, class: "dropdown-item" do %>
                 <div class="fa fa-graduation-cap"></div>
-                My courses
+                Created Courses
                 <div class="badge badge-danger">
                   <%= current_user.courses.count %>
                 </div>
@@ -126,7 +103,7 @@
             </a>
             <div aria-labelledby="adminDropdown" class="dropdown-menu dropdown-menu-right">
               <%= link_to users_path, class: "dropdown-item" do %>
-                <div class="fa fa-users"></div>
+                <div class="fa fa-lock-open"></div>
                 Users
                 <div class="badge badge-danger">
                   <%= User.count %>
@@ -147,29 +124,9 @@
           </li>
         <% end %>
       </ul>
-      <!--.form-inline.my-2.my-lg-0
-      -->
-      <!--  = form_tag(courses_path, method: :get) do
-      -->
-      <!--    .input-group
-      -->
-      <!--      = text_field_tag :title, params[:title], autocomplete: 'off', placeholder: "Find a course", class: 'form-control-sm'
-      -->
-      <!--      %span.input-group-append
-      -->
-      <!--        %button.btn.btn-primary.btn-sm{:type => "submit"}
-      -->
-      <!--          %span.fa.fa-search{"aria-hidden" => "true"}
-      -->
+
       <ul class="navbar-nav mr-right">
-        <!--%li.nav-item{class: "#{'active font-weight-bold' if current_page?(activity_path)}"}
-        -->
-        <!--  = link_to activity_path, class: 'nav-link' do
-        -->
-        <!--    .fa.fa-bell
-        -->
-        <!--    Activity
-        -->
+
         <li class="nav-item dropdown">
           <a aria-expanded="false" aria-haspopup="true" class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" id="navbarDropdown" role="button">
             <b>
