@@ -39,7 +39,9 @@
         <th>
           <%= sort_link(@q, :email) %>
         </th>
-        <th>created_at</th>
+        <th>
+          <%= sort_link(@q, :created_at) %>
+        </th>
         <th>
           <%= 'sign_in_count'.humanize %>
         </th>
@@ -56,10 +58,10 @@
           <%= 'last_sign_in_ip'.humanize %>
         </th>
         <th>
-          <%= 'courses_count'.humanize %>
+          <%= sort_link(@q, :courses_count) %>
         </th>
         <th>
-          <%= 'enrollments_count'.humanize %>
+          <%= sort_link(@q, :enrollments_count) %>
         </th>
         <th>Roles</th>
       </tr>
@@ -79,7 +81,7 @@
             <%= link_to user.email, user_path(user) %>
           </td>
           <td>
-            <%= user.created_at %>
+            <%= user.created_at.strftime('%d/%m/%y - %H:%M') %>
           </td>
           <td>
             <%= user.sign_in_count %>
@@ -117,5 +119,5 @@
     </tbody>
   </table>
 </div>
-<br/>
 <%= raw(pagy_bootstrap_nav(@pagy)) %>
+<br/>
