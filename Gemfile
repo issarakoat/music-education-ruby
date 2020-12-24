@@ -41,3 +41,6 @@ gem 'public_activity'
 gem "rolify"
 gem "pundit"
 gem 'pagy'
+
+gem "chartkick"
+gem 'groupdate'
