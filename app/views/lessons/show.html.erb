@@ -3,8 +3,12 @@
 <%= link_to @lesson.course.title, course_path(@lesson.course) %>
 /
 <%= link_to @lesson.title, course_lesson_path(@course, @lesson) %>
-<p></p>
-<div class="row">
+
+<p>
+  Impression: <%= @lesson.user_lessons.where(user: current_user).first.impressions %>
+</p>
+
+<div class="row mt-2">
   <div class="col-lg-8">
     <%= render 'lessons/lesson', lesson: @lesson %>
     <p></p>
