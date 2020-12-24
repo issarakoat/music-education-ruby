@@ -102,6 +102,14 @@
               Admin
             </a>
             <div aria-labelledby="adminDropdown" class="dropdown-menu dropdown-menu-right">
+              <%= link_to unapproved_courses_path, class: "dropdown-item" do %>
+                <div class="fa fa-graduation-cap"></div>
+                Unapproved courses
+                <div class="badge badge-danger">
+                  <%= Course.unapproved.count %>
+                </div>
+              <% end %>
+
               <%= link_to users_path, class: "dropdown-item" do %>
                 <div class="fa fa-lock-open"></div>
                 Users
