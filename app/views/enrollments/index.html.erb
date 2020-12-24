@@ -18,6 +18,7 @@
 <%= search_form_for @q, url: @ransack_path do |f| %>
   <%= f.search_field :user_email_cont, placeholder: 'user email' %>
   <%= f.search_field :course_title_cont, placeholder: 'course title' %>
+  <%= f.search_field :course_user_email_cont, placeholder: 'teacher' %>
   <%= f.search_field :price_eq, placeholder: 'price' %>
   <%= f.search_field :rating_eq, placeholder: 'rating' %>
   <%= f.search_field :review_cont, placeholder: 'review' %>
@@ -28,7 +29,6 @@
   <table class="table table-bordered table-striped table-sm">
     <thead>
       <tr>
-        <th>ID</th>
         <th>
           <%= sort_link(@q, :user_email, "User") %>
           <!--.fa.fa-user
@@ -52,6 +52,7 @@
           <!--Course
           -->
         </th>
+        <th>Teacher</th>
         <th>
           <%= sort_link(@q, :price) %>
           <!--.fa.fa-dollar-sign
@@ -83,9 +84,6 @@
       <% @enrollments.each do |enrollment| %>
         <tr>
           <td>
-            <%= enrollment.id %>
-          </td>
-          <td>
             <%= link_to enrollment.user.email, user_path(enrollment.user) %>
           </td>
           <td>
@@ -93,6 +91,9 @@
           </td>
           <td>
             <%= link_to enrollment.course, course_path(enrollment.course) %>
+          </td>
+          <td>
+            <%= link_to enrollment.course.user, user_path(enrollment.course.user) %>
           </td>
           <td>
             <%= number_to_currency(enrollment.price) %>
