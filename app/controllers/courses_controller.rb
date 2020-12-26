@@ -1,7 +1,7 @@
 class CoursesController < ApplicationController
   # before_action :set_course, only: [:show, :edit, :update, :destroy]
   skip_before_action :authenticate_user!, :only => [:show]
-  before_action :set_course, only: [:show, :edit, :update, :destroy, :approve, :unapprove]
+  before_action :set_course, only: [:show, :edit, :update, :destroy, :approve, :unapprove, :analytics]
 
   # GET /courses
   # GET /courses.json
@@ -19,6 +19,10 @@ class CoursesController < ApplicationController
     @ransack_courses = Course.published.approved.ransack(params[:courses_search], search_key: :courses_search)
     #@courses = @ransack_courses.result.includes(:user)
     @pagy, @courses = pagy(@ransack_courses.result.includes(:user))
+  end
+  
+  def analytics
+    authorize @course, :owner?
   end
   
   def purchased
