@@ -9,14 +9,14 @@
     <div class="fa fa-check-square"></div>
   <% end %>
   <%= link_to course_lesson_path(@course, lesson) do  %>
-    <%= lesson.row_order %>
+    <%#= lesson.row_order %>
     <%= lesson.title %>
   <% end %>
 <% else %>
   <div class="fa fa-check-square"></div>
   <%= link_to course_lesson_path(@course, lesson) do  %>
     <%= lesson.row_order %>
-    <%= lesson.title %>
+    <%#= lesson.title %>
   <% end %>
 <% end %>
 <div class="float-right">
