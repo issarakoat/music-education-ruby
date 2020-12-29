@@ -24,6 +24,8 @@ class Course < ApplicationRecord
     scope :approved, -> { where(approved: true) }
     scope :unapproved, -> { where(approved: false) }
     
+    has_one_attached :avatar
+    
     extend FriendlyId
     friendly_id :title, use: :slugged
     
