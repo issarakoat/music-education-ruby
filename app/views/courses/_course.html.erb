@@ -3,6 +3,11 @@
     <div class="fa fa-graduation-cap"></div>
     <%= link_to course.title + ' ' + '(' + course.instrument + ')', course_path(course) %>
   </div>
+  <% if course.avatar.attached? %>
+    <div class="card-img-top">
+      <%= image_tag course.avatar, height: "200px", width: "100%" %>
+    </div>
+  <% end %>
   <div class="card-body">
     <p>Genre: <%= course.genre %> </p>
     <%= course.description %>
