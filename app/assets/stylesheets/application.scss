@@ -14,13 +14,13 @@
  *= require_self
  */
 
-/*@import "./actiontext.scss";*/
+@import "./actiontext.scss";
 @import "bootstrap";
-@import "font-awesome-sprockets";
-@import "font-awesome";
+@import 'trix/dist/trix.css'
 
 
-.form-control.is-invalid{ background-image: none; }
-.form-control.is-valid{ background-image: none; }
 
-.ui-state-highlight { height: 3em; line-height: 1.2em; background-color: yellow; }
+// .form-control.is-invalid{ background-image: none; }
+// .form-control.is-valid{ background-image: none; }
+
+// .ui-state-highlight { height: 3em; line-height: 1.2em; background-color: yellow; }

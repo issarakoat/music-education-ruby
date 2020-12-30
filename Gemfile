@@ -32,6 +32,8 @@ group :test do
 end
 
 
+gem 'bootstrap', '~> 4.4.1'
+gem 'jquery-rails'
 
 gem 'simple_form'
 gem 'devise'
