@@ -3,9 +3,19 @@ class Lesson < ApplicationRecord
   #Course.find_each { |course| Course.reset_counters(course.id, :lessons) }  
   has_many :user_lessons, dependent: :destroy
   validates :title, :instruction, :course, presence: true
-  validates :title, uniqueness: true, length: { maximum: 70 }
+  validates :title, length: { maximum: 70 }
+  validates_uniqueness_of :title, scope: :course_id
   
   has_rich_text :instruction
+  
+  has_one_attached :video
+  has_one_attached :video_thumbnail
+  validates :video,
+    content_type: ['video/mp4'], 
+    size: { less_than: 500.megabytes , message: 'size should be under 500 megabytes' }
+  validates :video_thumbnail,
+    content_type: ['image/png', 'image/jpg', 'image/jpeg'], 
+    size: { less_than: 10000.kilobytes , message: 'size should be under 10000 kilobytes' }
 
   extend FriendlyId
   friendly_id :title, use: :slugged
