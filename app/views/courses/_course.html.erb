@@ -75,15 +75,15 @@
           <div class="badge badge-danger">unapproved</div>
         <% end %>
       </div>
-    <% end %>
-    <% if policy(course).approve? %>
-      <div class="card-footer">
-        <% if course.approved? %>
-          <%= link_to 'unapprove', unapprove_course_path(course), method: :patch, class: 'btn btn-sm btn-danger' %>
-        <% else %>
-          <%= link_to 'approve', approve_course_path(course), method: :patch, class: 'btn btn-sm btn-success' %>
+        <% if policy(course).approve? %>
+          <div class="card-footer">
+            <% if course.approved? %>
+              <%= link_to 'unapprove', unapprove_course_path(course), method: :patch, class: 'btn btn-sm btn-danger' %>
+            <% else %>
+              <%= link_to 'approve', approve_course_path(course), method: :patch, class: 'btn btn-sm btn-success' %>
+            <% end %>
+          </div>
         <% end %>
-      </div>
     <% end %>
 
 </div>
