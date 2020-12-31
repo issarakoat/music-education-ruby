@@ -6,10 +6,18 @@
   <div class="form-inputs">
     <%= f.input :title, input_html: { autocomplete: 'off' } %>
     <%= f.rich_text_area :instruction %>
+    
+    <% if @lesson.video.attached? %>
+      <%= @lesson.video.filename %>
+    <% end %>
     <%= f.input :video %>
+    
+    <% if @lesson.video_thumbnail.attached? %>
+      <%= @lesson.video_thumbnail.filename %>
+    <% end %>
     <%= f.input :video_thumbnail %>
     <small>
-      <%= f.error :content, class: 'text-danger' %>
+      <%= f.error :instruction, class: 'text-danger' %>
     </small>
   </div>
 
