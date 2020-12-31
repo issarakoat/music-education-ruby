@@ -4,7 +4,7 @@
   <%= f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present? %>
   <div class="form-inputs">
     <%= f.input :title %>
-    <%= f.label :avatar %>
+    <%#= f.label :avatar %>
     <div class="row"></div>
     <% if @course.avatar.attached? %>
       <%= image_tag @course.avatar, width: "200px" %>
@@ -22,7 +22,8 @@
       -->
     <% end %>
     <div class="row"></div>
-    <%= f.file_field :avatar  %>
+    <%#= f.file_field :avatar  %>
+    <%= f.input :avatar  %>
     <small>
       <%= f.error :avatar, class: 'text-danger' %>
     </small>

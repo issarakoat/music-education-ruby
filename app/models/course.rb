@@ -1,6 +1,6 @@
 class Course < ApplicationRecord
     validates :title, :language, :price, :level, :instrument, :genre,  presence: true 
-    validates :description, presence: true, length: { :minimum => 5 }
+    validates :description, length: { minimum: 5 }
 
     def to_s
         title
@@ -14,7 +14,8 @@ class Course < ApplicationRecord
     has_many :enrollments, dependent: :restrict_with_error
     has_many :user_lessons, through: :lessons
     
-    validates :title, uniqueness: true
+    validates :title, uniqueness: true, length: { maximum: 70 }
+    validates :price, numericality: { greater_than_or_equal_to: 0 }
     
     scope :latest, -> { limit(3).order(created_at: :desc) }
     scope :top_rated, -> { limit(3).order(average_rating: :desc, created_at: :desc) }
@@ -26,7 +27,11 @@ class Course < ApplicationRecord
     
     has_one_attached :avatar
     
-    validates :avatar, attached: true, 
+    # validates :avatar, attached: true, 
+    #     content_type: ['image/png', 'image/jpg', 'image/jpeg'], 
+    #     size: { less_than: 10000.kilobytes , message: 'size should be under 10000 kilobytes' }
+        
+    validates :avatar, presence: true,
         content_type: ['image/png', 'image/jpg', 'image/jpeg'], 
         size: { less_than: 10000.kilobytes , message: 'size should be under 10000 kilobytes' }
     
