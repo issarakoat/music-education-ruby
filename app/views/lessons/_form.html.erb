@@ -14,6 +14,7 @@
     
     <% if @lesson.video_thumbnail.attached? %>
       <%= @lesson.video_thumbnail.filename %>
+      <%= link_to 'Remove video and thumbnail', delete_video_course_lesson_path(@course, @lesson), method: :delete, data: { confirm: 'Are you sure?' } %>
     <% end %>
     <%= f.input :video_thumbnail %>
     <small>
