@@ -28,6 +28,12 @@
               <source src="<%= rails_blob_url(@lesson.video) %>" type="<%= @lesson.video.content_type %>"></source>
             </video>
           <% end %>
+          
+          <!--Video.JS is not working-->
+          <%#= content_tag :video, id: 'my-video' do %>
+            <%#= tag :source, src: url_for(@lesson.video), type: @lesson.video.content_type %>
+          <%# end %>
+          
         <% end %>
         <%= lesson.instruction %>
       </div>
