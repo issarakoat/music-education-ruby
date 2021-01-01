@@ -28,8 +28,9 @@
       <%= f.error :avatar, class: 'text-danger' %>
     </small>
     <div class="row"></div>
-    <%= f.label :description %>
-    <%= f.rich_text_area :description %>
+    <%#= f.label :description %>
+    <%#= f.rich_text_area :description %>
+    <%= f.input :description, as: :rich_text_area %>
     <%= f.input :instrument %>
     <%= f.input :genre %>
     <small>
