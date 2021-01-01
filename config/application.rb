@@ -23,6 +23,7 @@ module MusicEducation
       ActionText::ContentHelper.allowed_attributes.add 'controls'
       ActionText::ContentHelper.allowed_tags.add 'video'
       ActionText::ContentHelper.allowed_tags.add 'source'
+      ActionText::ContentHelper.allowed_tags.add 'audio'
 
     end
 
